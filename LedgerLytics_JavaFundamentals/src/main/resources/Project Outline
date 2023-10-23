@@ -1,0 +1,27 @@
+Project Goal: Creating a CLI application to track financial transaction through transactions.csv.
+
+Project Breakdown:
+//Transactions
+-Read File
+-Save (and Sort?) Info
+//MainMenu
+-D: Add Deposit
+-P: Make a Payment (Debit)
+-L: Ledger- Display the ledger screen
+-X: Exit: exit the application
+//Ledger
+-A: All (display entries)
+-D: Deposit (display)
+-P: Payments (display negative-entries)
+-R: Reports
+--0: Back to report page
+--1: Month to Date
+--2: Previous Month
+--3: Year to Date
+--4: Previous Year
+--5: Search by Vendor
+--//Vendor name & Display all entries for specified Vendor inputted
+-M: Main Menu return
+
+Challenge:
+-Custom Search
