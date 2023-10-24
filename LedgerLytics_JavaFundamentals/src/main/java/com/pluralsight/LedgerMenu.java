@@ -21,10 +21,10 @@ public class LedgerMenu { // Ledger Menu Pushed to Main Menu
                     LOptions.paymentEntries(ledger);
                     break;
                 case "D":
-                    ReportMenu.menuReport();
+                    ReportMenu.menuReport(ledger);
                     break;
                 case "E":
-                    System.out.println("Directing back to Main Menu...");
+                    System.out.println("Closing Ledger Menu...");
                     process = true;
                     break;
                 default:
@@ -34,4 +34,3 @@ public class LedgerMenu { // Ledger Menu Pushed to Main Menu
         scanL.close();
     }
 }
-

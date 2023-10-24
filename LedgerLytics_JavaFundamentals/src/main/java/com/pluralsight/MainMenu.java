@@ -3,7 +3,7 @@ import java.util.*;
 
 public class MainMenu {
     private static final List<Data> ledger = new ArrayList<>();
-    public static void mainMenu() {
+    public static void main(String[] args) {
         Scanner scanMM = new Scanner(System.in);
         boolean process = false;
 
@@ -13,10 +13,22 @@ public class MainMenu {
 
             switch (option) { // Options A/B pulled from MOptions Class; Option C pulled from LedgerMenu Class
                 case "A":
-                    MOptions.addDeposit(ledger);
+                    do {
+                        MOptions.addDeposit(ledger);
+                        System.out.println("Another Deposit? (Y/N): ");
+                        String choice = scanMM.nextLine().toUpperCase();
+                        if (!choice.equals("Y"))
+                            break;
+                    } while (true);
                     break;
                 case "B":
-                    MOptions.makePayment(ledger);
+                    do {
+                        MOptions.makePayment(ledger);
+                        System.out.println("Another Payment? (Y/N): ");
+                        String choice = scanMM.nextLine().toUpperCase();
+                        if (!choice.equals("Y"))
+                            break;
+                    } while (true);
                     break;
                 case "C":
                     LedgerMenu.menuLedger(ledger);

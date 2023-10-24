@@ -39,7 +39,8 @@ public class MOptions {
         System.out.println("Debit Successfully Recorded.");
     }
     private static void saveEntry(Data entry) {
-        try (FileWriter writeEntry = new FileWriter("transactions.csv", true)) {
+        String filePath = "src/main/resources/transactions.csv";
+        try (FileWriter writeEntry = new FileWriter(filePath, true)) {
             String entryFormat = entry.dataFormat() + "\n";
             writeEntry.write(entryFormat);
         } catch (IOException e) {
