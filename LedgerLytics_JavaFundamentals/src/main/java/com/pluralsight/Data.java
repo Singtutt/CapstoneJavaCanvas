@@ -1,5 +1,6 @@
 package com.pluralsight;
-import java.time.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 public class Data {
@@ -31,32 +32,11 @@ public class Data {
     public double getAmount() {
         return amount;
     }
-//    Setters
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-    public void setTime(LocalTime time) {
-        this.time = time;
-    }
-    public void setDescription(String description) {
-        this.description = description;
-    }
-    public void setVendor(String vendor) {
-        this.vendor = vendor;
-    }
-    public void setAmount(double amount) {
-        if (amount >= 0) {
-            this.amount = amount;
-        } else {
-            throw new IllegalArgumentException("Entry cannot be negative");
-        }
-    }
-    @Override
-    public String toString() {
+    public String dataFormat() {
         DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm:ss");
         String formatDate = date.format(dateFormat);
         String formatTime = time.format(timeFormat);
-        return formatDate + " | " + formatTime + " | " + description + " | " + vendor + " | " + amount;
+        return String.format("%s | %s | %s | %s | %.2f", formatDate, formatTime, description, vendor, amount);
     }
 }
