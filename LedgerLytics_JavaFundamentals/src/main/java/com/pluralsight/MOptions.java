@@ -1,10 +1,10 @@
 package com.pluralsight;
 import java.time.*;
 import java.io.*;
-import java.util.Scanner;
+import java.util.*;
 
 public class MOptions {
-    public static void addDeposit() {
+    public static void addDeposit(List<Data> ledger) {
         LocalDate presentDate = LocalDate.now();
         LocalTime presentTime = LocalTime.now();
 
@@ -17,10 +17,11 @@ public class MOptions {
         double amount = scanD.nextDouble();
 
         Data deposit = new Data(presentDate, presentTime, description, vendor, amount);
+        ledger.add(deposit);
         saveEntry(deposit);
         System.out.println("Deposit Successfully Recorded.");
     }
-    public static void makePayment() {
+    public static void makePayment(List<Data> ledger) {
         LocalDate presentDate = LocalDate.now();
         LocalTime presentTime = LocalTime.now();
 
@@ -33,6 +34,7 @@ public class MOptions {
         double amount = scanP.nextDouble();
 
         Data payment = new Data(presentDate,presentTime, description, vendor, -(amount));
+        ledger.add(payment);
         saveEntry(payment);
         System.out.println("Debit Successfully Recorded.");
     }
