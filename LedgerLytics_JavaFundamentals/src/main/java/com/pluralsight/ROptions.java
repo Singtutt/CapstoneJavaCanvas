@@ -66,5 +66,6 @@ public class ROptions {
                 System.out.println(entry.dataFormat());
             }
         }
+        scanV.close();
     }
 }

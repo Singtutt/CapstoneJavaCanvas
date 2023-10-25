@@ -9,6 +9,9 @@ public class Data {
     private String description;
     private String vendor;
     private double amount;
+    private static final DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    private static final DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm:ss");
+
     public Data(LocalDate date, LocalTime time, String description, String vendor, double amount) {
         this.date = date;
         this.time = time;
@@ -33,8 +36,6 @@ public class Data {
         return amount;
     }
     public String dataFormat() {
-        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm:ss");
         String formatDate = date.format(dateFormat);
         String formatTime = time.format(timeFormat);
         return String.format("%s | %s | %s | %s | %.2f", formatDate, formatTime, description, vendor, amount);

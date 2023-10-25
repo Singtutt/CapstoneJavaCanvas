@@ -3,12 +3,16 @@ import java.util.*;
 
 public class MainMenu {
     private static final List<Data> ledger = new ArrayList<>();
-    public static void main(String[] args) {
-        Scanner scanMM = new Scanner(System.in);
-        boolean process = false;
+    private static Scanner scanMM = new Scanner(System.in);
 
-        while (!process) {
-            System.out.println("~Main Menu~\nA: Add Deposit\nB: Make Payment (Debit)\nC: Ledger Menu\nD: Exit Program\nPlease select an option (A-D)");
+    public static void main(String[] args) {
+        while (true) {
+            System.out.println("~Main Menu~\n" +
+                    "A: Add Deposit\n" +
+                    "B: Make Payment (Debit)\n" +
+                    "C: Ledger Menu\n" +
+                    "D: Exit Program\n" +
+                    "Please select an option (A-D)");
             String option = scanMM.nextLine().toUpperCase();
 
             switch (option) { // Options A/B pulled from MOptions Class; Option C pulled from LedgerMenu Class
@@ -34,13 +38,14 @@ public class MainMenu {
                     LedgerMenu.menuLedger(ledger);
                     break;
                 case "D":
-                    System.out.println("Exiting Application... Goodbye!");
-                    process = true;
+                    System.out.println("Exiting Application.\n" +
+                            "Goodbye...");
+                    scanMM.close();
+                    System.exit(0);
                     break;
                 default:
                     System.out.println("Invalid Option Input. Please select a valid option (A-D)");
             }
         }
-        scanMM.close();
     }
 }
