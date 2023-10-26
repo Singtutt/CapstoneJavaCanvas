@@ -1,18 +1,15 @@
 package com.pluralsight;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.*;
+import java.io.*;
 
 public class MainMenu {
     private static final List<Data> ledger = new ArrayList<>();
 
     public static void main(String[] args) {
-        try (Scanner scanner = new Scanner(System.in)) {
-            readCSV();
+        try (Scanner scanner = new Scanner(System.in)) { // Initiate the "scanner"
+            readCSV(); // Initiate current "Data"
             while (true) {
                 System.out.println("~Main Menu~\n" +
                         "A: Add Deposit\n" +
@@ -21,23 +18,22 @@ public class MainMenu {
                         "D: Exit Program\n" +
                         "Please select an option (A-D)");
                 String mainOption = scanner.nextLine().toUpperCase();
-
                 switch (mainOption) { // Options A/B pulled from MOptions Class; Option C pulled from LedgerMenu Class
-                    case "A":
+                    case "A": // Pulled from "MOptions"
                         do {
                             MOptions.addDeposit(ledger, scanner);
                             writeCSV();
                             System.out.println("Another Deposit? (Y/N): ");
                         } while (scanner.nextLine().equalsIgnoreCase("Y"));
                         break;
-                    case "B":
+                    case "B": // Pulled from "MOptions"
                         do {
                             MOptions.makePayment(ledger, scanner);
                             writeCSV();
                             System.out.println("Another Payment? (Y/N): ");
                         } while (scanner.nextLine().equalsIgnoreCase("Y"));
                         break;
-                    case "C":
+                    case "C": // Pulled from "LedgerMenu"
                         LedgerMenu.menuLedger(ledger, scanner);
                         break;
                     case "D":
@@ -58,7 +54,7 @@ public class MainMenu {
         String filePath = "src/main/resources/transactions.csv";
         try (BufferedReader readFile = new BufferedReader(new FileReader(filePath))) {
             String line;
-            while   ((line = readFile.readLine()) != null) {
+            while ((line = readFile.readLine()) != null) {
                 String[] parts = line.split("\\|");
                 LocalDate date = LocalDate.parse(parts[0].trim());
                 LocalTime time = LocalTime.parse(parts[1].trim());

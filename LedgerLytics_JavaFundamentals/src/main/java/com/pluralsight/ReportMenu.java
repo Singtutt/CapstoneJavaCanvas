@@ -11,10 +11,10 @@ public class ReportMenu {
                         "C: Year to Date\n" +
                         "D: Previous Year\n" +
                         "E: Search by Vendor\n" +
-                        "F: Go back to Ledger Menu\n" +
-                        "Please select an option (A-E): ");
+                        "F: Search Entries By... \n" +
+                        "G: Go Back to Ledger Menu\n" +
+                        "Please select an option (A-G):\n");
             String option = scanner.nextLine().toUpperCase();
-
             switch (option) {
                 case "A":
                     ROptions.optionA(ledger);
@@ -32,11 +32,14 @@ public class ReportMenu {
                     ROptions.optionE(ledger, scanner);
                     break;
                 case "F":
+                    Custom.searchReport(ledger, scanner);
+                    break;
+                case "G":
                     System.out.println("Closing Report Menu.\n" +
                             "Back to...");
                     return;
                 default:
-                    System.out.println("Invalid Option Input. Please select a valid option (A-F)");
+                    System.out.println("Invalid Option Input. Please select a valid option (A-G)");
             }
         }
     }

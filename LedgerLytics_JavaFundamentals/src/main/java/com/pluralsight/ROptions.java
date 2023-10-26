@@ -50,13 +50,13 @@ public class ROptions {
         }
     }
     public static void optionE(List<Data> ledger, Scanner scanner) {
-            System.out.println("Vendor Name: ");
-            String nameVendor = scanner.nextLine();
-            System.out.println("Vendor Entries: " + nameVendor);
-            for (Data entry : ledger) {
-                if (entry.getVendor().equalsIgnoreCase(nameVendor)) {
-                    System.out.println(entry.dataFormat());
-                }
+        System.out.println("Vendor Name: ");
+        String nameVendor = scanner.nextLine();
+        System.out.println("Vendor Entries: " + nameVendor);
+        for (Data entry : ledger) {
+            if (entry.getVendor().equalsIgnoreCase(nameVendor)) {
+                System.out.println(entry.dataFormat());
             }
+        }
     }
 }

@@ -1,7 +1,7 @@
 package com.pluralsight;
 import java.util.*;
 
-public class LedgerMenu { // Ledger Menu Pushed to Main Menu when called upon.
+public class LedgerMenu { // Ledger Menu Screen pushed to Main Menu when called upon.
     public static void menuLedger(List<Data> ledger, Scanner scanner) {
         try {
             while (true) {

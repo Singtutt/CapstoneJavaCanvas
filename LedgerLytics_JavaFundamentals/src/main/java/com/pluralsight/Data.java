@@ -35,7 +35,7 @@ public class Data {
     public double getAmount() {
         return amount;
     }
-//    Base Format
+//  Format for "Data" in transactions.csv
     public String dataFormat() {
         String formatDate = date.format(dateFormat);
         String formatTime = time.format(timeFormat);
