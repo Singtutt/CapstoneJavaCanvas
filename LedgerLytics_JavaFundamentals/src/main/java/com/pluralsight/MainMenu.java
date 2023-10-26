@@ -1,51 +1,87 @@
 package com.pluralsight;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.*;
 
 public class MainMenu {
     private static final List<Data> ledger = new ArrayList<>();
-    private static Scanner scanMM = new Scanner(System.in);
 
     public static void main(String[] args) {
-        while (true) {
-            System.out.println("~Main Menu~\n" +
-                    "A: Add Deposit\n" +
-                    "B: Make Payment (Debit)\n" +
-                    "C: Ledger Menu\n" +
-                    "D: Exit Program\n" +
-                    "Please select an option (A-D)");
-            String option = scanMM.nextLine().toUpperCase();
+        try (Scanner scanner = new Scanner(System.in)) {
+            readCSV();
+            while (true) {
+                System.out.println("~Main Menu~\n" +
+                        "A: Add Deposit\n" +
+                        "B: Make Payment (Debit)\n" +
+                        "C: Ledger Menu\n" +
+                        "D: Exit Program\n" +
+                        "Please select an option (A-D)");
+                String mainOption = scanner.nextLine().toUpperCase();
 
-            switch (option) { // Options A/B pulled from MOptions Class; Option C pulled from LedgerMenu Class
-                case "A":
-                    do {
-                        MOptions.addDeposit(ledger);
-                        System.out.println("Another Deposit? (Y/N): ");
-                        String choice = scanMM.nextLine().toUpperCase();
-                        if (!choice.equals("Y"))
-                            break;
-                    } while (true);
-                    break;
-                case "B":
-                    do {
-                        MOptions.makePayment(ledger);
-                        System.out.println("Another Payment? (Y/N): ");
-                        String choice = scanMM.nextLine().toUpperCase();
-                        if (!choice.equals("Y"))
-                            break;
-                    } while (true);
-                    break;
-                case "C":
-                    LedgerMenu.menuLedger(ledger);
-                    break;
-                case "D":
-                    System.out.println("Exiting Application.\n" +
-                            "Goodbye...");
-                    scanMM.close();
-                    System.exit(0);
-                    break;
-                default:
-                    System.out.println("Invalid Option Input. Please select a valid option (A-D)");
+                switch (mainOption) { // Options A/B pulled from MOptions Class; Option C pulled from LedgerMenu Class
+                    case "A":
+                        do {
+                            MOptions.addDeposit(ledger, scanner);
+                            writeCSV();
+                            System.out.println("Another Deposit? (Y/N): ");
+                        } while (scanner.nextLine().equalsIgnoreCase("Y"));
+                        break;
+                    case "B":
+                        do {
+                            MOptions.makePayment(ledger, scanner);
+                            writeCSV();
+                            System.out.println("Another Payment? (Y/N): ");
+                        } while (scanner.nextLine().equalsIgnoreCase("Y"));
+                        break;
+                    case "C":
+                        LedgerMenu.menuLedger(ledger, scanner);
+                        break;
+                    case "D":
+                        System.out.println("Exiting Application.\n" +
+                                "Goodbye...");
+                        writeCSV();
+                        return;
+                    default:
+                        System.out.println("Invalid Option Input. Please select a valid option (A-D)");
+                }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Main Processing Error: " + e.getMessage());
+        }
+    }
+    private static void readCSV() {
+        String filePath = "src/main/resources/transactions.csv";
+        try (BufferedReader readFile = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while   ((line = readFile.readLine()) != null) {
+                String[] parts = line.split("\\|");
+                LocalDate date = LocalDate.parse(parts[0].trim());
+                LocalTime time = LocalTime.parse(parts[1].trim());
+                String description = parts[2].trim();
+                String vendor = parts[3].trim();
+                double amount = Double.parseDouble(parts[4].trim());
+                Data entry = new Data(date, time,description,vendor,amount);
+                ledger.add(entry);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Error in Reading File: " + e.getMessage());
+        }
+    }
+    private static void writeCSV() {
+        String filePath = "src/main/resources/transactions.csv";
+        try (FileWriter writeEntry = new FileWriter(filePath)) {
+            for (Data entry : ledger) {
+                String entryFormat = entry.dataFormat() + "\n";
+                writeEntry.write(entryFormat);
+            }
+        } catch (IOException e) {
+            System.out.println("Error Recording Entry: " + e.getMessage());
         }
     }
 }

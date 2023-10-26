@@ -4,51 +4,59 @@ import java.io.*;
 import java.util.*;
 
 public class MOptions {
-    public static void addDeposit(List<Data> ledger) {
-        try (Scanner scanD = new Scanner(System.in)) {
+    public static void addDeposit(List<Data> ledger, Scanner scanner) {
+        try {
             LocalDate presentDate = LocalDate.now();
             LocalTime presentTime = LocalTime.now();
-
-
-            System.out.println("Deposit Information:\nVendor: ");
-            String vendor = scanD.nextLine();
+            System.out.println("Deposit Information:\n" +
+                    "Vendor: ");
+            String vendor = scanner.nextLine();
             System.out.println("Item Description: ");
-            String description = scanD.nextLine();
-            System.out.println("Amount: ");
-            double amount = scanD.nextDouble();
+            String description = scanner.nextLine();
+            double amount = userInput(scanner);
 
             Data deposit = new Data(presentDate, presentTime, description, vendor, amount);
             ledger.add(deposit);
-            saveEntry(deposit);
             System.out.println("Deposit Successfully Recorded.");
+        } catch (Exception e) {
+            exceptionControl("Deposit", e);
         }
     }
-    public static void makePayment(List<Data> ledger) {
-        try (Scanner scanP = new Scanner(System.in)) {
+    public static void makePayment(List<Data> ledger, Scanner scanner) {
+        try {
             LocalDate presentDate = LocalDate.now();
             LocalTime presentTime = LocalTime.now();
 
-
-            System.out.println("Debit Information:\nVendor: ");
-            String vendor = scanP.nextLine();
+            System.out.println("Debit Information:\n" +
+                    "Vendor: ");
+            String vendor = scanner.nextLine();
             System.out.println("Item Description: ");
-            String description = scanP.nextLine();
-            System.out.println("Amount: ");
-            double amount = scanP.nextDouble();
+            String description = scanner.nextLine();
+            double amount = -userInput(scanner);
 
-            Data payment = new Data(presentDate, presentTime, description, vendor, -(amount));
+            Data payment = new Data(presentDate, presentTime, description, vendor, amount);
             ledger.add(payment);
-            saveEntry(payment);
             System.out.println("Debit Successfully Recorded.");
+        } catch (Exception e) {
+            exceptionControl("Debit", e);
         }
     }
-    private static void saveEntry(Data entry) {
-        String filePath = "src/main/resources/transactions.csv";
-        try (FileWriter writeEntry = new FileWriter(filePath, true)) {
-            String entryFormat = entry.dataFormat() + "\n";
-            writeEntry.write(entryFormat);
-        } catch (IOException e) {
-            System.out.println("Error in Recording Entry." + e.getMessage());
+    private static void exceptionControl(String operation, Exception e) {
+        e.printStackTrace();
+        System.out.println(operation + " Unsuccessfully Recorded: " + e.getMessage());
+    }
+    private static double userInput(Scanner scanner) {
+        double amount;
+        while (true) {
+            System.out.println("Amount: ");
+            String amountEntry = scanner.nextLine();
+            try {
+                amount = Double.parseDouble(amountEntry);
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid Amount Entry. Please enter a valid number.");
+            }
         }
+        return amount;
     }
 }

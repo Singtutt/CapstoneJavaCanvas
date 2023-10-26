@@ -35,6 +35,7 @@ public class Data {
     public double getAmount() {
         return amount;
     }
+//    Base Format
     public String dataFormat() {
         String formatDate = date.format(dateFormat);
         String formatTime = time.format(timeFormat);
