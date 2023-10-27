@@ -6,9 +6,9 @@
 - [Overview](#overview)
 - [Project Structure](#project-structure)
 - [Features and Usage](#features-and-usage)
-  - [Main Menu](#main_menu)
-  - [Ledger Menu](#ledger_menu)
-  - [Report Menu](#report_menu)
+  - [Main Menu](#main-menu)
+  - [Ledger Menu](#ledger-menu)
+  - [Report Menu](#report-menu)
 - [Code Highlight](#code-highlight)
   - [Custom Search](#custom-search)
 - [Acknowledgments](#acknowledgements)
@@ -32,7 +32,7 @@ activities.
 - ROptions: Handles report-related functions, generating and displaying reports.
 
 ## Features and Usage
-### **Main Menu** {#main-menu}
+### **Main Menu** 
 - Launch the application to access initial Main Menu.
 - The main menu screen displays, showcasing the following options:
   - A: Add Deposit
@@ -47,7 +47,7 @@ activities.
 
 ![Main Menu Screen](src/main/resources/demo_pictures/main_menu.png)
 
-### **Ledger Menu** {#ledger_menu}
+### **Ledger Menu**
 - Displayed data will be ordered by most recent to oldest entries.
 - Accessed from option "C" from the Main Menu, displays ledger menu screen. Showcasing the following options:
   - A: Display All Entries
@@ -63,7 +63,7 @@ activities.
 
 ![Ledger Menu Screen](src/main/resources/demo_pictures/ledger_menu.png)
 
-### **Report Menu** {#report_menu}
+### **Report Menu**
 - Accessed from option "D" from the Ledger Menu, displays report menu screen. Showcasing the following options:
   - A: Month To Date
     - User is able to view all entries within the current month.
