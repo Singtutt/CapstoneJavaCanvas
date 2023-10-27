@@ -1,6 +1,5 @@
 # LedgerLytics: JavaFundamentals
-
-# ~Capstone Project~
+## **Capstone Project**
 
 ## Table of Contents:
 
