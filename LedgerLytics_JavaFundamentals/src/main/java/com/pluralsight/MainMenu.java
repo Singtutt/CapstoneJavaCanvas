@@ -8,7 +8,7 @@ public class MainMenu {
     private static final List<Data> ledger = new ArrayList<>();
 
     public static void main(String[] args) {
-        try (Scanner scanner = new Scanner(System.in)) { // Initiate the "scanner"
+        try (Scanner scanner = new Scanner(System.in)) { // Initiate the "scanner" throughout the Methods.
             readCSV(); // Initiate current "Data"
             while (true) {
                 System.out.println("~Main Menu~\n" +
@@ -18,7 +18,8 @@ public class MainMenu {
                         "D: Exit Program\n" +
                         "Please select an option (A-D)");
                 String mainOption = scanner.nextLine().toUpperCase();
-                switch (mainOption) { // Options A/B pulled from MOptions Class; Option C pulled from LedgerMenu Class
+
+                switch (mainOption) {
                     case "A": // Pulled from "MOptions"
                         do {
                             MOptions.addDeposit(ledger, scanner);

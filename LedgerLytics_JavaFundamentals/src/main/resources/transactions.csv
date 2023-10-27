@@ -2,7 +2,7 @@
 2023-10-26 | 08:57:24 | Test One | Finalizing | 123.45
 2023-10-25 | 20:43:24 | Rental | AirBnb | 1500.69
 2023-10-25 | 20:42:52 | Rental | AirBnB | -1500.69
-2023-10-25 | 20:02:59 | Sneaker | Nike | -100.00
+2023-10-25 | 20:02:59 | Sneakers | Nike | -100.00
 2023-10-25 | 20:02:28 | Sneakers | Nike | 100.00
 2023-10-25 | 18:43:17 | Sneakers | Adidas | 145.67
 2023-09-25 | 18:42:24 | Sneakers | Adidas | -145.67
@@ -26,3 +26,11 @@
 2021-10-24 | 18:06:49 | Sneakers | Nike | 250.00
 2021-10-24 | 18:04:14 | Groceries | Food Lion | -100.00
 2021-10-24 | 18:04:02 | Sneakers | Nike | -250.00
+2023-10-27 | 10:38:01 | Sneakers | Nike | 125.00
+2023-10-27 | 10:38:43 | Sneakers | Adidas | 90.00
+2023-10-27 | 10:39:37 | Sneakers | Nike | -125.00
+2023-10-27 | 10:40:10 | Sneakers | Adidas | -90.00
+2023-10-27 | 10:49:10 | Sneakers | FootLocker | 100.00
+2023-10-27 | 10:49:48 | Food | Tous Les Jours | 15.00
+2023-10-27 | 10:52:05 | Sneakers | FootLocker | -100.00
+2023-10-27 | 10:52:44 | Food | Tous Les Jours | -15.00

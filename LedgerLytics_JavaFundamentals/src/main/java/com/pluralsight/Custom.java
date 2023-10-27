@@ -42,7 +42,7 @@ public class Custom {
         if (vendor != null && !entry.getVendor().equalsIgnoreCase(vendor)) {
             field = false;
         }
-        if (Math.abs(entry.getAmount()) != Math.abs(amount)) {
+        if (Math.abs(entry.getAmount()) != Math.abs(amount)) { // Required to Display both Positive and Negative entries
             field = false;
         }
         return field;
@@ -70,6 +70,6 @@ public class Custom {
         if (input.isEmpty()) {
             return 0.0;
         }
-        return Double.parseDouble(input); // Required to Display both Positive and Negative entries
+        return Double.parseDouble(input);
     }
 }
