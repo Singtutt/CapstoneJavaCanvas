@@ -6,7 +6,11 @@
 - [Overview](#overview)
 - [Project Structure](#project-structure)
 - [Features and Usage](#features-and-usage)
+  - [Main Menu](#main_menu)
+  - [Ledger Menu](#ledger_menu)
+  - [Report Menu](#report_menu)
 - [Code Highlight](#code-highlight)
+  - [Custom Search](#custom-search)
 - [Acknowledgments](#acknowledgements)
 
 
