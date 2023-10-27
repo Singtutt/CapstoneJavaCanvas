@@ -30,7 +30,7 @@ activities.
 - LOptions: Handles ledger-related functions, displaying entries.
 - ReportMenu: Report Menu for the application.
 - ROptions: Handles report-related functions, generating and displaying reports.
-- Custom: Handles custome search functions, generating a report based off search criteria inputs.
+- Custom: Handles custom search functions, generating a report based off search criteria inputs.
 
 ## Features and Usage
 ### **Main Menu** 
